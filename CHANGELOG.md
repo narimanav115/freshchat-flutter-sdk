@@ -1,3 +1,37 @@
+## 0.10.18 (12/07/2024)
+### Bug fixes
+* Fix for bot quick actions display once a conversation is resolved in iOS.
+* Added support for html content in carousels and fix for hyperlink redirection in carousel's secorndary button and description content in iOS.
+* Fix for chat history restoration issue with pagination in iOS.
+* Fix for bot specific variables not updating in bot flows in iOS.
+* Fix correct display of search options in the searchable list for Slash command quick actions in iOS.
+* Fix security issue where HTML injection is allowed through the chat input field in iOS.
+* Fix crash in bot articles feedback option when sent in languages other than English in iOS.
+* Fix for the SDK text input field type being set up for OTP autofilling by default in Android.
+* Fix for the possibility of HTML injection through the SDK's chat input field in Android.
+* Fix for the alignment issue in the categories listing screen in Android.
+* Fix for the chat reply window starting with a lowercase letter in Android.
+* Fix for the agent response expectation time taking a few seconds to update after a locale change in Android.
+* Fix for incorrect Preview messages being shown in Channels list in Android.
+* Fix for failing read receipts in conversations in Android.
+
+## 0.10.17 (21/06/2024)
+### Enhancement
+* Upgraded min SDK to 21 in Android.
+
+### Bug fixes
+* Fix for the faq search based on the tag filter by category or article in Android.
+* Fix for the Crash on updating to SDK v0.10.14(or above) from v0.10.10 (or below) in Android.
+* Fix for Search results not filtered by tags in Android.
+* Fix for links in Description are not redirected to the respected page in Android.
+* Fix for HTML tags not allowing the hyperlinks to redirect to a web-page displayed on carousels in Android.
+* Fix for OTP SMS not received for given mobile number while initiating the OTP from the Android SDK in Android.
+* Fix for Faq not opening with correct filter tags on initialisation time in Android.
+* Fix for Issues with bullet points displaying in Mobile SDK in Android.
+* Fix to prevent the bot from looping when the device time is incorrect in Android.
+* Fix occasional crashes in the setUser and identifyUser APIs in iOS.
+* Fix crash in the JWT restore API when using invalid tokens in iOS.
+
 ## 0.10.16 (21/05/2024)
 ### Enhancement
 * Added support for the Middle East data center in iOS.
@@ -49,7 +83,7 @@
 * Fix display of team member information in chat messages.
 * Fix infinite loading issue for users with expired JWT authentication.
 
-## 0.10.12 (10/01/2023)
+## 0.10.12 (10/01/2024)
 ### Bug fixes
 * Fix to enable text input editor when using Freshchat Public APIs to send messages on behalf of an agent/bot in Android.
 
