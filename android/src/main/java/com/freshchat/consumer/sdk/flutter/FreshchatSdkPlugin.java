@@ -226,7 +226,7 @@ public class FreshchatSdkPlugin implements FlutterPlugin, MethodCallHandler {
     }
 
     public String sdkVersion() {
-        return "6.2.8";
+        return Freshchat.getSDKVersionName();
     }
 
     public void showFAQsWithOptions(MethodCall call) {
@@ -518,7 +518,12 @@ public class FreshchatSdkPlugin implements FlutterPlugin, MethodCallHandler {
         try {
             Map pushPayload = call.argument("pushPayload");
             Bundle pushPayloadBundle = jsonToBundle(pushPayload);
-            Freshchat.handleFcmMessage(context, pushPayloadBundle);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Freshchat.handleFcmMessage(context, pushPayloadBundle);
+                }
+            }).start();
         } catch (Exception e) {
             Log.e(ERROR_TAG, e.toString());
         }
@@ -557,6 +562,11 @@ public class FreshchatSdkPlugin implements FlutterPlugin, MethodCallHandler {
     public void notifyAppLocaleChange() {
         Freshchat.notifyAppLocaleChange(context);
     }
+
+    public void dismissFreshchatView() {
+        Intent dismissIntent = new Intent("com.freshchat.consumer.sdk.actions.DismissFreshchatScreens");
+		LocalBroadcastManager.getInstance(context).sendBroadcast(dismissIntent);
+    } 
 
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
@@ -679,6 +689,10 @@ public class FreshchatSdkPlugin implements FlutterPlugin, MethodCallHandler {
 
                 case "notifyAppLocaleChange":
                     notifyAppLocaleChange();
+                    break;
+
+                case "dismissFreshchatView":
+                    dismissFreshchatView();
                     break;
 
                 default:
